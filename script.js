@@ -14,7 +14,7 @@ generateBtn.addEventListener("click", writePassword);
 ///////////////////////// DO NOT CHANGE ABOVE HERE /////////////////////////
 
 function generatePassword() {
-  var chooseLength = window.prompt ("How long do you want your password? Enter number between 8-128.");
+  var chooseLength = window.prompt ("How long do you want your password? Enter number between 8-128.")
   var includeUppercase = window.prompt ("Do you need uppercase letters in your password? Enter Y(es) or N(o).")
   var includeNumbers = window.prompt ("Do you need numbers in your password? Enter Y or N.")
   var includeSpec = window.prompt ("Do you need a special character in your password? Enter Y or N.")
@@ -24,7 +24,38 @@ function generatePassword() {
   var numberList = ["1", "2","3", "4", "5", "6", "7", "8", "9", "0"]
   var specList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+", "?", "/", "<", ">"]
 
-  
+  for (let i = 0; i < chooseLength; i++)
+  {
+    var sentenceArray = []
+
+    var uppercaseIndex = Math.floor(Math.random()*uppercaseList.length);
+    var lowercaseIndex = Math.floor(Math.random()*lowercaseList.length);
+    var numberIndex = Math.floor(Math.random()*numberList.length);
+    var specialIndex = Math.floor(Math.random()*specList.length);
+
+    var uppercase = uppercaseList[uppercaseIndex]
+    var lowercase = lowercaseList[lowercaseIndex]
+    var number = numberList[numberIndex]
+    var specialChar = specList[specialIndex]
+
+     var sentenceArray = []
+     sentenceArray.push(...lowercase)
+     if (includeUppercase==="Y") {
+      sentenceArray.push(...uppercase)
+     }
+     else if (includeNumbers==="Y") {
+       sentenceArray.push(...number)
+     }
+     else if (includeSpec==="Y") {
+       sentenceArray.push(...specialChar)
+     }
+     else {sentenceArray.push()}
+     sentenceArray.push(...lowercase)
+
+    var password = sentenceArray.toString()
+    window.alert("your new password is:" + password)
+
+  }
 }
 
 
